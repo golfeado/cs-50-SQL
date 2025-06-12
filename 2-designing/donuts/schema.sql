@@ -1,20 +1,20 @@
 PRAGMA foreign_keys = ON;
 
 CREATE TABLE ingredients (
-       id             INTEGER PRIMARY KEY,
-       ingredient     TEXT    NOT NULL,
-       unit           TEXT    NOT NULL,
-       price_per_unit DECIMAL NOT NULL
-                              CHECK(price_per_unit >= 0)
+       id             INTEGER         PRIMARY KEY,
+       ingredient     TEXT            NOT NULL,
+       unit           TEXT            NOT NULL,
+       price_per_unit DECIMAL (10, 2) NOT NULL
+                                      CHECK(price_per_unit >= 0)
 );
 
 CREATE TABLE donuts (
-       id          INTEGER PRIMARY KEY,
-       name        TEXT    NOT NULL,
-       gluten_free INTEGER DEFAULT 0
-                           CHECK(gluten_free IN (0, 1)),
-       price       DECIMAL NOT NULL
-                           CHECK(price >= 0)
+       id          INTEGER          PRIMARY KEY,
+       name        TEXT             NOT NULL,
+       gluten_free INTEGER          DEFAULT 0
+                                    CHECK(gluten_free IN (0, 1)),
+       price       DECIMAL (10, 2)  NOT NULL
+                                    CHECK(price >= 0)
 );
 
 CREATE TABLE ingredients_in_donuts (
